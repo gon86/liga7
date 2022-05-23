@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" type="module"></script>
+    <title>Liga 7</title>
+</head>
+<body>
+    <div id="cargando-recursos">
+        <div id="trofeo-cargando"></div>
+        <div class="cargando">
+            <div class="circulo"></div>
+            <div class="circulo"></div>
+            <div class="circulo"></div>
+        </div>
+        <button id="b-cargando-comenzar" class="oculto">Comenzar</button>
+    </div>
+
+    <div id="fondo-popups" class="fondo-oculto">
+        <div id="mensaje" class="popup">
+            <div class="texto-popup"></div>
+            <button>Aceptar</button>
+        </div>
+        <div id="dialogo" class="popup">
+            <div class="texto-popup"></div>
+            <button>Aceptar</button>
+            <button>Cancelar</button>
+        </div>
+        <div id="dialogo-reiniciar" class="popup">
+            <div class="texto-popup"></div>
+            <button>Aceptar</button>
+            <button>Cancelar</button>
+        </div>
+    </div>
+
+    <div id="contenedor">
+        <div id="menu" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">LIGA 7</h2></td>
+                        <td><div id="trofeo"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="b-crear-equipo">Crear equipo</button>
+            <button id="b-entrenar" disabled="">Entrenar</button>
+            <button id="b-jugar-partido" disabled="">Jugar partido</button>
+            <button id="b-tabla-posiciones" disabled="">Tabla de posiciones</button>
+            <button id="b-fixture" disabled="">Fixture</button>
+            <button id="b-instrucciones">Instrucciones</button>
+            <button id="b-sonido">Desactivar sonido</button>
+            <button id="b-reiniciar" disabled="">Reiniciar</button>
+        </div>
+
+        <div id="instrucciones" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Instrucciones</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="intro">¡Bienvenido a Liga 7! Una competición de fútbol donde asumes el rol de DT.</p>
+            <p class="parrafo">
+                El primer paso es crear un equipo compuesto por siete jugadores, puedes crearlos de forma predefinida para una
+                partida rápida o de forma personalizada donde debes indicar para cada uno el nombre, número de camiseta
+                y posición en la cancha.
+            </p>
+            <p class="parrafo">
+                Puedes entrenar a tus jugadores utilizando puntos de experiencia obtenidos en cada partido y cambiar la alineación
+                de tu equipo. El resultado del partido y los goles a favor determinan cuántos puntos obtienes.
+            </p>
+            <p class="parrafo">
+                Además puedes consultar la tabla de posiciones y el fixture cuando quieras. Recuerda entrenar antes de jugar
+                un partido ya que eso influirá en el rendimiento de tu equipo. ¡Buena suerte!
+            </p>
+        </div>
+
+        <div id="crear-equipo" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Crea tu equipo</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="subpantalla-equipo activa">
+                <form>
+                    <div>Nombre del equipo</div>
+                    <input type="text" id="nombre-equipo" placeholder="Equipo">
+                    <button type="submit" data-equipo="defecto">Equipo por defecto</button>
+                    <button type="submit" data-equipo="personalizado">Equipo personalizado</button>
+                </form>
+            </div>
+            
+            <div class="subpantalla-equipo">
+                <form>
+                    <div>
+                        <div>Nombre de jugador</div>
+                        <input type="text" id="nombre-jugador" placeholder="Jugador">
+                    </div>
+                    <div>
+                        <div>N° de camiseta</div>
+                        <input type="number" id="numero-camiseta" placeholder="0"></div>
+                    <div>
+                        <div>Posición</div>
+                        <select id="posicion">
+                            <option value="">(Seleccionar)</option>
+                            <option value="arquero">Arquero</option>
+                            <option value="defensor">Defensor</option>
+                            <option value="mediocampista">Mediocampista</option>
+                            <option value="delantero">Delantero</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="b-jugador-siguiente">Siguiente</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="entrenamiento" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Entrenamiento</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="datos-entrenamiento">
+                <span>Alineación: </span><span id="alineacion"></span><br>
+                <span>Puntos disponibles: </span><span id="puntos-disponibles"></span><br><br>
+            </div>
+            <table id="t-entrenamiento">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="partido" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Partido</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="fecha"></div>
+            <div id="vs"></div>
+            <button id="b-comenzar-tiempo-1" class="visible">Comenzar 1° tiempo</button>
+            <table id="t-relato">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <button id="b-comenzar-tiempo-2" class="oculto">Comenzar 2° tiempo</button>
+            <div class="cargando cargando-oculto centrado">
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+            </div>
+        </div>
+
+        <div id="tabla-posiciones" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Posiciones</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="t-posiciones">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Equipo</th>
+                        <th>Pts</th>
+                        <th>GF</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="fixture" class="pantalla">
+            <table class="encabezado">
+                <tbody>
+                    <tr>
+                        <td><h2 class="titulo">Fixture</h2></td>
+                        <td><button class="b-menu"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="contenedor-fixture"></div>
+        </div>
+    </div>
+</body>
+</html>

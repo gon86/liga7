@@ -1,0 +1,472 @@
+@font-face {
+	font-family: "cour-font";
+	src: url("cour.ttf");
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body, button, select, input {
+    font-family: "cour-font", "Courier New", "Courier", monospace, sans-serif;
+}
+
+body {
+    margin: 0px;
+    background-image: url("../imagenes/cesped.jpg");
+    background-repeat: no-repeat;
+    background-color: rgb(36, 36, 36);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-size: 15px;
+    user-select: none;
+}
+
+#menu h2 {
+    font-size: 24px;
+}
+
+.pantalla h2 {
+    font-size: 21px;
+}
+
+button {
+    background-color: white;
+    border-width: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    font-size: 15px;
+}
+
+button:hover, select:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#crear-equipo button:not(.b-menu) {
+    background-color: rgba(243, 107, 16, 0.9);
+    color: white;
+}
+
+select {
+    color: black;
+    font-size: 14px;
+    outline-width: 0px;
+}
+
+#contenedor {
+    margin: 20px;
+}
+
+#menu button, #crear-equipo button:not(.b-menu) {
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+input {
+    width: calc(100% - 12px);
+    height: 34px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    color: black;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-width: 0px;
+    background-color: white;
+    font-size: 15px;
+    outline-width: 0px;
+}
+
+input::placeholder {
+    font-size: 15px;
+}
+
+.pantalla:not(.activa), .popup:not(.activo), .fondo-oculto {
+    display: none;
+}
+
+.pantalla.activa, .popup.activo, .fondo-visible {
+    display: block;
+}
+
+#menu {
+    animation-name: transicion;
+    animation-duration: 150ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes transicion {
+    from { 
+        opacity: 0;
+        transform: scale(1.05, 1.05); 
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1, 1); 
+    }
+}
+
+.subpantalla-equipo {
+    display: none;
+}
+
+.subpantalla-equipo.activa {
+    display: block;
+}
+
+#menu button, #crear-equipo button:not(.b-menu), #crear-equipo select {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.b-menu {
+    width: 38px;
+    height: 38px;
+    background-image: url("../imagenes/menu.png");
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+table.encabezado {
+    margin-bottom: 12px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.encabezado td:nth-child(2) {
+    width: 1px;
+}
+
+table.encabezado .titulo {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+#menu table.encabezado {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#trofeo {
+    width: 62px;
+    height: 62px;
+    background-image: url("../imagenes/trofeo.png");
+    background-repeat: no-repeat;
+}
+
+#t-entrenamiento {
+    color: black;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 8px;
+}
+
+#t-entrenamiento tr {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#t-entrenamiento td {
+    padding: 8px;
+    vertical-align: bottom;
+}
+
+#t-entrenamiento td:nth-child(2) {
+    width: 1px;
+}
+
+#t-entrenamiento button {
+    background-color: rgb(243, 107, 16);
+    color: white;
+}
+
+select, .b-entrenar-jugador {
+    height: 38px;
+    margin-top: 4px;
+}
+
+.arquero-entrenamiento {
+    border: 1px solid rgb(118, 118, 118);
+    background-color: white;
+    padding-top: 9px;
+    padding-left: 6px;
+    margin-top: 4px;
+    height: 26px;
+    width: 133px;
+    font-size: 14px;
+}
+
+#t-posiciones {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 8px;
+}
+
+#t-posiciones th {
+    font-size: 16px;
+}
+
+#t-posiciones tr {
+    height: 38px;
+}
+
+#t-posiciones tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+#t-posiciones tbody tr:nth-child(even) {
+    background-color: rgba(243, 107, 16, 0.8);
+    color: white;
+}
+
+#t-posiciones td {
+    text-align: center;
+}
+
+.fixture-vs {
+    margin-top: 6px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.fixture-fecha {
+    height: 30px;
+    background-color: rgba(243, 107, 16, 0.8);
+    color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 6px;
+    font-size: 16px;
+}
+
+#instrucciones .intro {
+    background-color: rgba(243, 107, 16, 0.8);
+    color: white;
+    padding: 14px;
+    border-radius: 4px;
+}
+
+#instrucciones .parrafo {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 14px;
+    border-radius: 4px;
+}
+
+#t-relato {
+    border-collapse: collapse;
+    margin-top: 14px;
+}
+
+#t-relato td:nth-child(1) {
+    vertical-align: top;
+}
+
+.d-mensaje, .d-mensaje-fin {
+    display:inline-block;
+    padding: 8px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.d-mensaje {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 15px;
+}
+
+.d-minuto {
+    color: white;
+    background-color: rgb(38, 38, 38);
+}
+
+.d-minuto, .d-minuto-fin {
+    min-width: 40px;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.d-minuto-fin, .d-mensaje-fin {
+    background-color: rgb(233, 83, 14);
+    color: white;
+}
+
+.visible {
+    display: block;
+    height: 40px;
+    width: 100%;
+}
+
+.oculto, .cargando-oculto {
+    display: none;
+}
+
+.cargando-visible {
+    display: inline-block;
+}
+
+#vs, #fecha, #datos-entrenamiento {
+    font-size: 16px;
+}
+
+#vs {
+    margin-bottom: 10px;
+}
+
+#b-comenzar-tiempo-2 {
+    margin-bottom: 10px;
+}
+
+.centrado {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.descentrado {
+    margin-left: 48px;
+}
+
+.cargando .circulo {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation-name: transicion-cargando;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite;
+}
+
+.cargando .circulo:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.cargando .circulo:nth-child(2) {
+    animation-delay: 500ms;
+}
+
+.cargando .circulo:nth-child(3) {
+    animation-delay: 1000ms;
+}
+
+@keyframes transicion-cargando {
+    0% { 
+        opacity: 0;
+        transform: scale(1, 1); 
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.5, 1.5); 
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1, 1); 
+    }
+}
+
+#fondo-popups {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.popup {
+    box-sizing: border-box;
+    background-color: rgb(16, 102, 231);
+    width: calc(100% - 70px);
+    padding: 20px 14px 20px 14px;
+    margin: 120px auto 0px auto;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 130px;
+    box-shadow: 0px 0px 18px 12px rgba(0, 0, 0, 0.6);
+    animation-name: transicion-popup;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in;
+}
+
+@keyframes transicion-popup {
+    0% { 
+        opacity: 0;
+        transform: scale(1, 1); 
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2, 1.2); 
+    }
+    100% {
+        transform: scale(1, 1); 
+    }
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.texto-popup {
+    margin-bottom: 10px;
+}
+
+#cargando-recursos {
+    position: absolute;
+    top: calc(50% - 35px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 128px;
+}
+
+#cargando-recursos .cargando {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 12px;
+}
+
+#trofeo-cargando {
+    width: 80px;
+    height: 80px;
+    background-image: url("../imagenes/trofeo-cargando.png");
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+#b-cargando-comenzar {
+    padding: 10px 20px 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: rgb(243, 107, 16);
+    color: white;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media(min-width: 400px){
+    #contenedor {
+        width: 360px;
+        position: relative;
+        left: calc(50% - 20px);
+        transform: translateX(-50%);
+    }
+
+    .popup {
+        width: 330px;
+    }
+}
